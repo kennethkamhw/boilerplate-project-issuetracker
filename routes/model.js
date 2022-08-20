@@ -13,18 +13,18 @@ const mongoose = require("mongoose");
   "status_text": "In QA"
 */
 const issueSchema = new mongoose.Schema({
-    issue_title: { type: String, require: true },
-    issue_text: { type: String, require: true },
-    created_on: { type: Date, require: true },
-    update_on: { type: Date, require: true },
-    created_by: { type: String, require: true },
     assigned_to: String,
-    open: { type: Boolean, require: true },
     status_text: String,
+    open: { type: Boolean, required: true },
+    issue_title: { type: String, required: true },
+    issue_text: { type: String, required: true },
+    created_by: { type: String, required: true },
+    created_on: { type: Date, required: true },
+    updated_on: { type: Date, required: true },
 });
 
 const projectSchema = new mongoose.Schema({
-    project_title: { type: String, require: true },
+    project_title: { type: String, required: true },
     issues: [issueSchema],
 });
 

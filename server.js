@@ -20,23 +20,23 @@ app.use(cors({ origin: "*" })); //For FCC testing purposes only
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
-//Sample front-end
-app.route("/:project/").get(function(req, res) {
-    console.log("sending project pages...");
-    res.sendFile(process.cwd() + "/views/issue.html");
-});
-
 //Index page (static HTML)
 app.route("/").get(function(req, res) {
     console.log("sending static HTML homepage...");
     res.sendFile(process.cwd() + "/views/index.html");
 });
 
-//For FCC testing purposes
-fccTestingRoutes(app);
-
 //Routing for API
 apiRoutes(app);
+
+//Sample front-end
+app.route("/:project/").get(function(req, res) {
+    console.log("sending project pages...");
+    res.sendFile(process.cwd() + "/views/issue.html");
+});
+
+//For FCC testing purposes
+fccTestingRoutes(app);
 
 //404 Not Found Middleware
 app.use(function(req, res, next) {
