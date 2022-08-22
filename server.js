@@ -20,6 +20,12 @@ app.use(cors({ origin: "*" })); //For FCC testing purposes only
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
+app.use((req, res, next) => {
+  console.log("");
+  console.log(`Recieved Request: METHOD = ${req.method}, URL = ${req.originalUrl}`);
+  next();
+});
+
 //Index page (static HTML)
 app.route("/").get(function(req, res) {
     console.log("sending static HTML homepage...");
@@ -30,8 +36,8 @@ app.route("/").get(function(req, res) {
 apiRoutes(app);
 
 //Sample front-end
-app.route("/:project/").get(function(req, res) {
-    console.log("sending project pages...");
+app.route("/:projectname/").get(function(req, res) {
+    console.log(`sending project pages for ${req.parms.projectname}...`);
     res.sendFile(process.cwd() + "/views/issue.html");
 });
 
