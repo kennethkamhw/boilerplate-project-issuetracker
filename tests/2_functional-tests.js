@@ -223,7 +223,7 @@ suite("Functional Tests", function() {
                 .send({ _id: "banana" })
                 .end((err, res) => {
                     assert.equal(res.status, 200);
-                    assert.equal(res.body.error, "_id not exist");
+                    assert.equal(res.body.error, "could not delete");
                     done();
                 });
         });

@@ -182,7 +182,7 @@ module.exports = function(app) {
             } else {
                 const issueData = projectData.issues.id(_id);
                 if (!issueData) {
-                    res.send({ error: "_id not exist", _id: _id });
+                    res.send({ error: "could not delete", _id: _id });
                     return;
                 }
                 issueData.remove();
